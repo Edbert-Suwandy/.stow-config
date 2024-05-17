@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
+eval "$(zoxide init --cmd cd zsh)"
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -99,8 +99,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tf="terraform"
 alias k="kubectl"
-
-#
 
 # Created by `pipx` on 2024-04-16 09:12:54
 export PATH="$PATH:/Users/edbert/.local/bin"
