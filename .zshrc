@@ -96,15 +96,11 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-alias zshconf="vi ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tf="terraform"
 alias k="kubectl"
 
 #
-# Nip.io
-export NIP_IO_DEFAULT_IP=192.168.0.19
 
 # Created by `pipx` on 2024-04-16 09:12:54
 export PATH="$PATH:/Users/edbert/.local/bin"
