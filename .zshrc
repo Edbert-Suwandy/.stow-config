@@ -53,8 +53,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 
 
-
-
+alias nf="nvim $(fzf)"
 alias ls="ls --color"
 alias k="kubectl"
 alias vim="nvim"
