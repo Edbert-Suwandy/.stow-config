@@ -2,10 +2,10 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # Download zinit if don't exsist
 if [ ! -d "$ZINIT_HOME" ];then
-  mkkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/zdharma-continuum/zinit.git "ZINIT_HOME"
+  echo "installing zinit"
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
-
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add powerlevel 10k
@@ -24,11 +24,6 @@ bindkey '^f' autosuggest-accept
 
 # Add fzf-tab
 zinit light "Aloxaf/fzf-tab"
-
-
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-
 ZSH_THEME="robbyrussell"
 
 # History
@@ -48,7 +43,18 @@ setopt hist_find_no_dups
 # Completion and mathcing
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:&' menu no
+zstyle ':completion:*' menu no
+
+# Setup homebrew
+echo "checking for homebrew ==>"
+if [ ! -d "$HOMEBREW_PREFIX" ];then
+  echo "installing homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+
+
+echo "setting up dependency of homebrew ==>"
 
 # Aliases
 alias nf="nvim $(fzf)"
@@ -56,3 +62,10 @@ alias ls="ls --color"
 alias k="kubectl"
 alias vim="nvim"
 alias tf="terraform"
+
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+# homebrew setup
+if [[ $OSTYPE == *"darwin"* ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
