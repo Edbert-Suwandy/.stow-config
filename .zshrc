@@ -8,7 +8,6 @@ fi
 # ZINIT ================================================================================================================
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 # Download zinit if don't exsist
-echo "setting up zinit"
 if [ ! -d "$ZINIT_HOME" ];then
   echo "installing zinit"
   mkdir -p "$(dirname $ZINIT_HOME)"
@@ -16,7 +15,6 @@ if [ ! -d "$ZINIT_HOME" ];then
 fi
 source "${ZINIT_HOME}/zinit.zsh"
 
-echo "installing zinit plugins"
 # Add powerlevel 10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -32,7 +30,7 @@ zinit light zsh-users/zsh-autosuggestions
 bindkey '^f' autosuggest-accept
 
 # Add fzf-tab
-# zinit light "Aloxaf/fzf-tab"
+zinit light "Aloxaf/fzf-tab"
 
 # Themes and fonts ====================================================================================================
 
@@ -58,15 +56,17 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
 # Setup homebrew ======================================================================================================
-echo "checking for homebrew ==>"
-if [ ! -d "$HOMEBREW_PREFIX" ];then
+if [[ -z "${HOMEBREW_PREFIX}" ]];then
   echo "installing homebrew"
+
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  if [[ $OSTYPE == *"darwin"* ]]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+  fi
 fi
-
-
-
-echo "setting up dependency of homebrew ==>"
 
 # Aliases
 # alias nf="nvim $(fzf)"
@@ -75,17 +75,7 @@ alias k="kubectl"
 alias vim="nvim"
 alias tf="terraform"
 
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
 # homebrew setup
-if [[ $OSTYPE == *"darwin"* ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [[ $OSTYE == *"linux-gnu"* ]]; then
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
 
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-echo "finished setup"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
