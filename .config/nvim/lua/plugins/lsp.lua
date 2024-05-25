@@ -10,7 +10,9 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"lua_ls"
+					"lua_ls",
+					"gopls",
+					"rls",
 				}
 			})
 		end
@@ -20,7 +22,8 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({})
-
+			lspconfig.gopls.setup({})
+			lspconfig.rls.setup({})
 			vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, {})
 			vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, {})
 		end
