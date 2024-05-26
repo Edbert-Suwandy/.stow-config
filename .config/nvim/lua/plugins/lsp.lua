@@ -12,7 +12,6 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"gopls",
-					"rls",
 				}
 			})
 		end
@@ -21,9 +20,15 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({})
-			lspconfig.gopls.setup({})
-			lspconfig.rls.setup({})
+
+			local capabilites = require("cmp_nvim_lsp").default_capabilites
+			lspconfig.lua_ls.setup({
+				capabilites = capabilites,
+			})
+
+			lspconfig.gopls.setup({
+				capabilites = capabilites,
+			})
 			vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, {})
 			vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, {})
 		end
