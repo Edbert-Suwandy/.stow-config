@@ -12,6 +12,11 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"gopls",
+					'rust_analyzer',
+					'bashls',
+					'tsserver',
+					'yamlls',
+					"terraformls",
 				}
 			})
 		end
@@ -29,6 +34,28 @@ return {
 			lspconfig.gopls.setup({
 				capabilites = capabilites,
 			})
+
+			lspconfig.rust_analyzer.setup({
+				capabilites = capabilites
+			})
+
+			lspconfig.bashls.setup({
+				capabilites = capabilites
+			})
+
+			lspconfig.tsserver.setup({
+				capabilites = capabilites
+			})
+
+			lspconfig.yamlls.setup({
+				capabilites = capabilites
+			})
+
+			lspconfig.terraformls.setup({
+				capabilites = capabilites
+			})
+
+
 			vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, {})
 			vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, {})
 		end

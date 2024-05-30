@@ -1,5 +1,6 @@
 vim.cmd("set relativenumber")
 vim.g.mapleader = " "
+vim.cmd("set tabstop=4")
 
 -- lazy setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
