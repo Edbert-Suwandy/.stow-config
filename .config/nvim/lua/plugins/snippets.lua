@@ -1,6 +1,6 @@
 return {
 	{
-		'hrsh7th/cmp-nvim-lsp',
+		'hrsh7th/cmp-nvim-lsp'
 	},
 	{
 		'L3MON4D3/LuaSnip',
@@ -15,7 +15,7 @@ return {
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-path',
 			'hrsh7th/cmp-cmdline',
-			'hvrsh7th/nvim-cmp',
+			'hrsh7thz/nvim-cmp',
 			},
 		config = function()
 			local cmp = require'cmp'
