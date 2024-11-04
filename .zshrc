@@ -1,5 +1,15 @@
 eval "$(starship init zsh)"
 
+# Zap ================================================================================================================
+[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "ajeetdsouza/zoxide"
+
+autoload -Uz compinit
+compinit
+
+# Zioxide =============================================================================================================
 # Themes and fonts ====================================================================================================
 
 ZSH_THEME="robbyrussell"

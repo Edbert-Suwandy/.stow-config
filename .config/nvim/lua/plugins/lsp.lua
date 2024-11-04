@@ -13,10 +13,11 @@ return {
 					"lua_ls",
 					"gopls",
 					'rust_analyzer',
+					'docker_compose_language_service',
+					'dockerls',
+					'terraformls',
 					'bashls',
-					'tsserver',
-					'yamlls',
-					"terraformls",
+					'pyright',
 				}
 			})
 		end
@@ -36,26 +37,25 @@ return {
 			})
 
 			lspconfig.rust_analyzer.setup({
-				capabilites = capabilites
+				capabilites = capabilites,
 			})
 
-			lspconfig.bashls.setup({
-				capabilites = capabilites
+			lspconfig.docker_compose_language_service.setup({
+				capabilites = capabilites,
 			})
 
-			lspconfig.tsserver.setup({
-				capabilites = capabilites
+			lspconfig.dockerls.setup({
+				capabilites = capabilites,
 			})
-
-			lspconfig.yamlls.setup({
-				capabilites = capabilites
-			})
-
 			lspconfig.terraformls.setup({
-				capabilites = capabilites
+				capabilites = capabilites,
 			})
-
-
+			lspconfig.bashls.setup({
+				capabilites = capabilites,
+			})
+			lspconfig.pyright.setup({
+				capabilites = capabilites,
+			})
 			vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, {})
 			vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, {})
 		end

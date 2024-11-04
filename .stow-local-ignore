@@ -2,3 +2,4 @@ README.md
 .git
 script
 .config/go
+.gitignore
