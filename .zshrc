@@ -1,3 +1,4 @@
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(starship init zsh)"
 
 # Zap ================================================================================================================
@@ -37,7 +38,6 @@ zstyle ':completion:*' menu no
 #kubeneretes completions
 source <(helm completion zsh)
 source <(kubectl completion zsh)
-source <(kind completion zsh)
 # Aliases
 alias ls="ls --color"
 alias k="kubectl"
@@ -49,3 +49,6 @@ alias cd="z"
 alias kns="kubens"
 alias kctx="kubectx"
 
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
