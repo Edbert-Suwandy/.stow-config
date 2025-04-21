@@ -2,4 +2,6 @@ README.md
 .git
 script
 .config/go
+.config/gh
+.config/iterm2
 .gitignore
