@@ -52,3 +52,7 @@ alias kctx="kubectx"
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
   tmux attach-session -t default || tmux new-session -s default
 fi
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

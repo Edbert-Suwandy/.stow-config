@@ -5,3 +5,4 @@ script
 .config/gh
 .config/iterm2
 .gitignore
+.config/gopls

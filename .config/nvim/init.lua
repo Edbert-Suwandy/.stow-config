@@ -15,5 +15,15 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '●', 
+    spacing = 4,
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
 
 require("lazy").setup("plugins")

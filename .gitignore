@@ -1,3 +1,4 @@
 .config/go
+.config/gopls
 .config/systemd
 .config/helm
