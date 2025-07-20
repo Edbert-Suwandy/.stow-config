@@ -1,4 +1,7 @@
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [[ "$OSTYPE" == "Darwin.*" ]]; then
+		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 eval "$(starship init zsh)"
 
 # Zap ================================================================================================================
@@ -36,14 +39,20 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
 #kubeneretes completions
-source <(helm completion zsh)
-source <(kubectl completion zsh)
+if test -d "~/.kube"; then
+		# assume if .kube folder exist then helm is installed with kubernetes
+		source <(helm completion zsh)
+		source <(kubectl completion zsh)
+fi
 # Aliases
 alias ls="ls --color"
 alias k="kubectl"
 alias vim="nvim"
+alias fvim="fzf --preview='bat --color=always {}' --bind enter:'become(nvim {})'"
+alias fnvim="fzf --preview='bat --color=always {}' --bind enter:'become(nvim {})'"
 alias tf="terraform"
 alias cd="z"
+alias cat="bat"
 
 # Kubernetes stuff
 alias kns="kubens"
