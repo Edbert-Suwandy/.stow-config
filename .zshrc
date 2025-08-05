@@ -44,6 +44,10 @@ if test -d "~/.kube"; then
 		source <(helm completion zsh)
 		source <(kubectl completion zsh)
 fi
+
+# fzf
+source <(fzf --zsh)
+
 # Aliases
 alias ls="ls --color"
 alias k="kubectl"
