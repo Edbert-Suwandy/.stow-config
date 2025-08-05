@@ -8,6 +8,8 @@ eval "$(starship init zsh)"
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
+plug "zap-zsh/fzf"
+plug "Aloxaf/fzf-tab"
 
 autoload -Uz compinit
 compinit
@@ -37,6 +39,7 @@ setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 #kubeneretes completions
 if test -d "~/.kube"; then
@@ -44,9 +47,6 @@ if test -d "~/.kube"; then
 		source <(helm completion zsh)
 		source <(kubectl completion zsh)
 fi
-
-# fzf
-source <(fzf --zsh)
 
 # Aliases
 alias ls="ls --color"
